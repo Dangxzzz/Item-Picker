@@ -7,6 +7,8 @@ TagManager:
   - Plarform
   - Platform
   - GoodItem
+  - BackGroundAudio
+  - Slider
   layers:
   - Default
   - TransparentFX
