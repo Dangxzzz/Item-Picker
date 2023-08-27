@@ -5,6 +5,7 @@ namespace ItemPicker.Utillity
         #region Variables
 
         public const string Platform = "Platform";
+        public const string GoodItem = "GoodItem";
 
         #endregion
     }
