@@ -16,6 +16,7 @@ namespace ItemPicker.Game
             if (other.CompareTag(Tags.GoodItem))
             {
                 GameService.Instance.ChangeHP(-1);
+                SoundService.Instance.PlayFaleSound();
             }
             Destroy(other.gameObject);
         }

@@ -36,6 +36,7 @@ namespace ItemPicker.Game.Items
 
         protected virtual void PerformActions()
         {
+            SoundService.Instance.PlayCollisionSound();
             GameService.Instance.ChangeScore(_scoreToChange);
         }
 

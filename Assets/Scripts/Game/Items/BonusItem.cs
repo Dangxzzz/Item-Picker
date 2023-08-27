@@ -17,6 +17,7 @@ namespace ItemPicker.Game.Items
         {
             base.PerformActions();
             GameService.Instance.ChangeHP(_count);
+            SoundService.Instance.PlayPickUpSound();
         }
 
         #endregion
