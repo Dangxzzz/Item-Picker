@@ -44,6 +44,7 @@ namespace ItemPicker.Services
             OnHPChanged?.Invoke(Health);
             if (Health <= 0)
             {
+                SoundService.Instance.PlayLoseSound();
                 OnHPOver?.Invoke();
             }
         }

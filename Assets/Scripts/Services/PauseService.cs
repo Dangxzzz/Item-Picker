@@ -24,6 +24,7 @@ namespace ItemPicker.Services
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                SoundService.Instance.PlayPauseSound();
                 TogglePause();
             }
         }
