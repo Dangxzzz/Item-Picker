@@ -8,8 +8,6 @@ namespace ItemPicker.Services
     {
         #region Variables
 
-        [Header("Auto Play")]
-        [SerializeField] private bool _needAutoPlay;
         [Header("Configs")]
         [SerializeField] private int _startHP = 3;
 
@@ -25,7 +23,6 @@ namespace ItemPicker.Services
         #region Properties
 
         public int Health { get; private set; }
-        public bool NeedAutoPlay => _needAutoPlay;
         public int Score { get; set; }
 
         #endregion
@@ -58,6 +55,7 @@ namespace ItemPicker.Services
 
         public void RestartLevel()
         {
+            SetStartParameters();
             SceneLoader.Instance.ReloadCurrentScene();
         }
 
@@ -65,7 +63,7 @@ namespace ItemPicker.Services
         {
             SetInitHealth();
             Score = 0;
-            // PauseService.Instance.TogglePause();
+            PauseService.Instance.TogglePause();
         }
 
         #endregion
