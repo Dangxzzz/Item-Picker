@@ -7,6 +7,8 @@ namespace ItemPicker.Services
     {
         #region Variables
 
+        private const string VolumePrefskey = "Sound/Volume";
+
         [SerializeField] private AudioClip _FaleSound;
         [SerializeField] private AudioClip _pickUpCatch;
         [SerializeField] private AudioClip _loseGame;
@@ -21,7 +23,12 @@ namespace ItemPicker.Services
 
         public float SoundVolume
         {
-            set => _audioSource.volume = value;
+            get => _audioSource.volume;
+            set
+            {
+                _audioSource.volume = value;
+                PlayerPrefs.SetFloat(VolumePrefskey, value);
+            }
         }
 
         #endregion
@@ -30,27 +37,27 @@ namespace ItemPicker.Services
 
         public void PlayCollisionSound()
         {
-            _audioSource.PlayOneShot(_onCollision);
+            PlaySfx(_onCollision);
         }
 
         public void PlayFaleSound()
         {
-            _audioSource.PlayOneShot(_FaleSound);
-        }
-
-        public void PlayPauseSound()
-        {
-            _audioSource.PlayOneShot(_pauseSound);
+            PlaySfx(_FaleSound);
         }
 
         public void PlayLoseSound()
         {
-            _audioSource.PlayOneShot(_loseGame);
+            PlaySfx(_loseGame);
+        }
+
+        public void PlayPauseSound()
+        {
+            PlaySfx(_pauseSound);
         }
 
         public void PlayPickUpSound()
         {
-            _audioSource.PlayOneShot(_pickUpCatch);
+            PlaySfx(_pickUpCatch);
         }
 
         #endregion
@@ -61,6 +68,20 @@ namespace ItemPicker.Services
         {
             base.OnAwake();
             _audioSource = GetComponent<AudioSource>();
+
+            if (PlayerPrefs.HasKey(VolumePrefskey))
+            {
+                SoundVolume = PlayerPrefs.GetFloat(VolumePrefskey);
+            }
+        }
+
+        #endregion
+
+        #region Private methods
+
+        private void PlaySfx(AudioClip clip)
+        {
+            _audioSource.PlayOneShot(clip);
         }
 
         #endregion
