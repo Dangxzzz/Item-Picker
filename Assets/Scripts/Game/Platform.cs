@@ -9,14 +9,9 @@ namespace ItemPicker.Game
 
         private void Update()
         {
-            // if (PauseService.Instance.IsPaused)
-            // {
-            //     return;
-            // }
-
-            if (GameService.Instance.NeedAutoPlay)
+            if (PauseService.Instance.IsPaused)
             {
-                // TODO: AutoPlay
+                return;
             }
             else
             {
