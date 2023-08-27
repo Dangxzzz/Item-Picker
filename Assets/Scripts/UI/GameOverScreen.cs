@@ -55,6 +55,7 @@ namespace ItemPicker.UI
 
         private void OnRetryButtonClick()
         {
+            _contentObject.SetActive(false);
             GameService.Instance.RestartLevel();
         }
 
