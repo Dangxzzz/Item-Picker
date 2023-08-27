@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Plarform
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -38,6 +40,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackGround
+    uniqueID: 3426012509
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Platform
+    uniqueID: 3864731209
     locked: 0
