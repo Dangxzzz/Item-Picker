@@ -63,9 +63,8 @@ namespace ItemPicker.UI
 
         private void UpdateHealthPoint(int hp)
         {
-            if (_healthPoints.Count > hp)
+            if (_healthPoints.Count < hp)
             {
-                Debug.Log($"Add Health in UI {hp}|| {_healthPoints.Count}");
                 AddHealth(hp -_healthPoints.Count);
             }
 

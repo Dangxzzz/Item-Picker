@@ -10,6 +10,7 @@ namespace ItemPicker.Services
 
         [Header("Configs")]
         [SerializeField] private int _startHP = 3;
+        [SerializeField] private int _maxHP;
 
         #endregion
 
@@ -23,6 +24,9 @@ namespace ItemPicker.Services
         #region Properties
 
         public int Health { get; private set; }
+
+        public int MaxHealth => _maxHP;
+
         public int Score { get; set; }
 
         #endregion
@@ -40,7 +44,7 @@ namespace ItemPicker.Services
 
         public void ChangeHP(int count)
         {
-            Health = Mathf.Max(0, Health+=count);
+            Health = Mathf.Max(0, Health += count);
             OnHPChanged?.Invoke(Health);
             if (Health <= 0)
             {
