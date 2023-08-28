@@ -33,7 +33,7 @@ Transform:
   - {fileID: 8447615275766129068}
   - {fileID: 6657194772563207444}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5178124400885129548
 GameObject:
@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startHP: 3
+  _maxHP: 5
 --- !u!1 &8475943699164297598
 GameObject:
   m_ObjectHideFlags: 0
