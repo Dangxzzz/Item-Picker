@@ -40,7 +40,7 @@ namespace ItemPicker.Services
 
         public void ChangeHP(int count)
         {
-            Health = Mathf.Max(0, Health += count);
+            Health = Mathf.Max(0, Health+=count);
             OnHPChanged?.Invoke(Health);
             if (Health <= 0)
             {

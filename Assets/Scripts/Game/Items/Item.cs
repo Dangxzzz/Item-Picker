@@ -10,6 +10,7 @@ namespace ItemPicker.Game.Items
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Sprite[] _sprites;
         [SerializeField] private int _scoreToChange;
+        [SerializeField] private GameObject _vfx;
 
         #endregion
 
@@ -24,10 +25,14 @@ namespace ItemPicker.Game.Items
         {
             if (other.gameObject.CompareTag(Tags.Platform))
             {
-                // SoundService.Instance.PlayPickUpSound();
                 PerformActions();
                 Destroy(gameObject);
             }
+        }
+
+        private void InstantiateVfx()
+        {
+            Instantiate(_vfx, transform.position, Quaternion.identity);
         }
 
         #endregion
@@ -38,6 +43,7 @@ namespace ItemPicker.Game.Items
         {
             SoundService.Instance.PlayCollisionSound();
             GameService.Instance.ChangeScore(_scoreToChange);
+            InstantiateVfx();
         }
 
         #endregion
