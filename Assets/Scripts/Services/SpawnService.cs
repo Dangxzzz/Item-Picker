@@ -9,11 +9,19 @@ namespace ItemPicker.Services
     {
         #region Variables
 
+        [Header("Configs")]
         [SerializeField] private float _spawnRate = 2f;
+        [SerializeField] private float _increaseSpawnRate;
+        [SerializeField] private float _minSpawnRate;
         [SerializeField] private ItemSpawnData[] _items;
+        [SerializeField] private float _currentGravityScale;
+        [SerializeField] private float _increaseGravityScale;
+        [SerializeField] private float _maxGravityScale;
         private readonly float _leftLimit = -8.5f;
         private float _nextSpawn;
         private float _randX;
+
+        private Rigidbody2D _rg;
         private readonly float _rightLimit = 8.5f;
         private Vector2 _whereToSpawn;
 
@@ -21,9 +29,38 @@ namespace ItemPicker.Services
 
         #region Unity lifecycle
 
+        private void Awake()
+        {
+            Item.OnCreated += OnItemCreated;
+        }
+
+        private void Start()
+        {
+            InvokeRepeating("IncreaseSpawnRate", 1f, 20f);
+            InvokeRepeating("IncreaseGravityScale", 1f, 20f);
+        }
+
         private void Update()
         {
             CreateItem();
+        }
+
+        private void OnDestroy()
+        {
+            Item.OnCreated -= OnItemCreated;
+        }
+
+        private void OnValidate()
+        {
+            if (_items == null)
+            {
+                return;
+            }
+
+            foreach (ItemSpawnData itemSpawnData in _items)
+            {
+                itemSpawnData.OnValidate();
+            }
         }
 
         #endregion
@@ -47,17 +84,22 @@ namespace ItemPicker.Services
             }
         }
 
-        private void OnValidate()
+        private void IncreaseGravityScale()
         {
-            if (_items == null)
+            if (_currentGravityScale >= _maxGravityScale)
             {
                 return;
             }
+            _currentGravityScale += _increaseGravityScale;
+        }
 
-            foreach (ItemSpawnData itemSpawnData in _items)
+        private void IncreaseSpawnRate()
+        {
+            if (_spawnRate <= _minSpawnRate)
             {
-                itemSpawnData.OnValidate();
+                return;
             }
+            _spawnRate += _increaseSpawnRate;
         }
 
         private void InstantiateItemPrebab(Vector2 position)
@@ -85,6 +127,16 @@ namespace ItemPicker.Services
             }
         }
 
+        private void OnItemCreated(Item item)
+        {
+            item.ItemRigidBody.gravityScale = _currentGravityScale;
+        }
+
+        private void SpawnRate()
+        {
+            _spawnRate += _increaseGravityScale;
+        }
+
         #endregion
 
         #region Local data
@@ -93,11 +145,15 @@ namespace ItemPicker.Services
         private class ItemSpawnData
         {
             #region Variables
+
+            public Item ItemPrefab;
             [HideInInspector]
             public string Name;
-            public Item ItemPrefab;
             public int SpawnWeight;
 
+            #endregion
+
+            #region Public methods
 
             public void OnValidate()
             {
@@ -110,6 +166,7 @@ namespace ItemPicker.Services
                     Name = $"{ItemPrefab.name}:{SpawnWeight}";
                 }
             }
+
             #endregion
         }
 

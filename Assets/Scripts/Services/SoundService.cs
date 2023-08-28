@@ -8,13 +8,13 @@ namespace ItemPicker.Services
         #region Variables
 
         private const string VolumePrefskey = "Sound/Volume";
-
+        [Header("Clips")]
         [SerializeField] private AudioClip _FaleSound;
         [SerializeField] private AudioClip _pickUpCatch;
         [SerializeField] private AudioClip _loseGame;
         [SerializeField] private AudioClip _onCollision;
         [SerializeField] private AudioClip _pauseSound;
-
+        [Header("AudioSourse")]
         [SerializeField] private AudioSource _audioSource;
 
         #endregion

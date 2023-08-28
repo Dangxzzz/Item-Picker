@@ -57,6 +57,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7d58fd33da0c1714e83ed3c55ae05bb9, type: 3}
   _scoreToChange: -10
   _vfx: {fileID: 5985634496115995773, guid: 463cf9f7af4680240898f6aeba3fe3e6, type: 3}
+  _startGravityScale: 1
+  _increaseGravityScale: 1
+  _rg: {fileID: 3518880532998458202}
 --- !u!212 &2891502911269818574
 SpriteRenderer:
   m_ObjectHideFlags: 0

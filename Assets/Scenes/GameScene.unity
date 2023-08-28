@@ -459,16 +459,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnRate: 2
+  _increaseSpawnRate: -0.1
+  _minSpawnRate: 0.5
   _items:
-  - Name: GoodItem:40
-    ItemPrefab: {fileID: -5180862393990575095, guid: 6376ac91e3256374d8ac2174db880b99, type: 3}
+  - ItemPrefab: {fileID: -5180862393990575095, guid: 6376ac91e3256374d8ac2174db880b99, type: 3}
+    Name: GoodItem:40
     SpawnWeight: 40
-  - Name: BadItem:40
-    ItemPrefab: {fileID: 3121419928905336892, guid: 7b622393ad0dee248b7a5fede77d332f, type: 3}
+  - ItemPrefab: {fileID: 3121419928905336892, guid: 7b622393ad0dee248b7a5fede77d332f, type: 3}
+    Name: BadItem:40
     SpawnWeight: 40
-  - Name: BonusItem:20
-    ItemPrefab: {fileID: 6718994403318347297, guid: d822ad452e005534a8e4d3c259d2b681, type: 3}
+  - ItemPrefab: {fileID: 6718994403318347297, guid: d822ad452e005534a8e4d3c259d2b681, type: 3}
+    Name: BonusItem:20
     SpawnWeight: 20
+  _currentGravityScale: 1
+  _increaseGravityScale: 0.5
+  _maxGravityScale: 5
 --- !u!1 &1741361088
 GameObject:
   m_ObjectHideFlags: 0
